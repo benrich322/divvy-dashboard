@@ -14,28 +14,33 @@ body {
 /* Header */
 header {
     position: relative;
-    text-align: center;
-  }
-  
-  /* Style for the header image */
-  header img {
     width: 100%;
-    height: auto;
-  }
+    background-color: #66c0ec;
+    height: 5.5rem;
+}
+
+h1 {
+    font-family: 'Paytone One', sans-serif;
+    text-align: left;
+    font-size: 3.5rem;
+    margin: 0;
+    margin-left: .5rem;
+}
 
 /* Sidebar */
 .sidebar {
-    background-color: #2a2138;
+    background-color: #66c0ec;
     display: flex;
     flex-direction: row;
     height: 100vh;
-    width: 5vh;
+    width: 5rem;
     transition: .5s;
     overflow: hidden;
+    margin-top: -.5rem;
 }
 
 .sidebar:hover {
-    width: 20vh;
+    width: 15rem;
 }
 
 .sidebar__list {
@@ -45,19 +50,22 @@ header {
 .sidebar__selection {
     display: flex;
     align-items: center;
-    padding: 1rem 0;
-    font-size: 1.5rem;
-    color: #ccc;
+    padding: 1.6rem 0;
+    font-size: 1.4rem;
+    color: black;
     transition: .5s;
+    font-weight: 600;
 }
 
 .sidebar__selection:hover {
     background-color: lightslategray;
-    width: 20vh;
+    width: 15rem;
 }
 
 .sidebar__icon {
     width: 4rem;
     text-align: center;
     margin-right: 1rem;
+    margin-left: .3rem;
+    font-size: 2rem;
 }
