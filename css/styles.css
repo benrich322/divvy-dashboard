@@ -71,19 +71,34 @@ body {
 }
 
 /* Collapsible */
+.collapsible__container {
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: inline-block;
+    min-width: 120px;
+
+  }
+
 .collapsible__header {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: left;
+    position: relative;
+    padding: 5px 10px 0px 10px;
 }
 
 .collapsible__heading {
     margin-top: 0;
-    font-size: 2.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 0rem;
 }
 
 .collapsible__chevron {
     transition: transform 0.3s;
     transform: rotate(180deg);
+    margin-left: 60%;
 }
 
 .collapsible__content {
@@ -92,10 +107,12 @@ body {
     opacity: 0;
     transition: all .3s;
     font-size: 1.6rem;
+    margin-top: 0rem;
 }
 
 .collapsible--expanded .collapsible__chevron {
     transform: rotate(0);
+
 }
 
 .collapsible--expanded .collapsible__content {
@@ -103,11 +120,19 @@ body {
     opacity: 1;
 }
 
-/* Icons */
-.icon {
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
-    justify-content: center;
+.collapsible__selection {
+    font-size: 1.2rem; /* Adjust font size as needed */
+    display: flex; /* Add flex properties for layout */
     align-items: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
 }
+
+.collapsible__content {
+    list-style: none; /* Remove bullet points */
+    position: absolute; /* Add absolute positioning to remove from normal flow */
+    z-index: 1; /* Place the dropdown above other content */
+    background-color: #fff; /* Add a background color to the dropdown */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for dropdown */
+    bottom: 87%;
+  }
