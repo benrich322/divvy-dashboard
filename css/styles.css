@@ -12,14 +12,14 @@ body {
 }
 
 /* Header */
-header {
+.header {
     position: relative;
     width: 100%;
     background-color: #66c0ec;
     height: 5.5rem;
 }
 
-h1 {
+.header__content {
     font-family: 'Paytone One', sans-serif;
     text-align: left;
     font-size: 3.5rem;
@@ -68,4 +68,46 @@ h1 {
     margin-right: 1rem;
     margin-left: .3rem;
     font-size: 2rem;
+}
+
+/* Collapsible */
+.collapsible__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapsible__heading {
+    margin-top: 0;
+    font-size: 2.5rem;
+}
+
+.collapsible__chevron {
+    transition: transform 0.3s;
+    transform: rotate(180deg);
+}
+
+.collapsible__content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all .3s;
+    font-size: 1.6rem;
+}
+
+.collapsible--expanded .collapsible__chevron {
+    transform: rotate(0);
+}
+
+.collapsible--expanded .collapsible__content {
+    max-height: 100vh;
+    opacity: 1;
+}
+
+/* Icons */
+.icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -17,27 +17,31 @@
     />
   </head>
   <body>
-    <header>
-      <h1>
-        <i class="fa-solid fa-bicycle"></i>
-        Divvy Dashboard
-      </h1>
-    </header>
-    <section class="sidebar">
-      <ul class="sidebar__list">
-        <li class="sidebar__selection">
-          <i class="sidebar__icon fa-solid fa-map"></i
-          ><span class="sidebar__text">Map</span>
-        </li>
-        <li class="sidebar__selection">
-          <i class="sidebar__icon fa-solid fa-cloud"></i
-          ><span class="sidebar__text">Weather</span>
-        </li>
-        <li class="sidebar__selection">
-          <i class="sidebar__icon fa-solid fa-trophy"></i
-          ><span class="sidebar__text">Records</span>
-        </li>
-      </ul>
-    </section>
+    <div class="collapsible collapsible--expanded">
+      <header class="collapsible__header">
+        <h2 class="collapsible__heading">Item 1</h2>
+        <i
+          class="fa-solid fa-chevron-up collapsible__chevron"
+        ></i>
+      </header>
+      <div class="collapsible__content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat,
+        pariatur.
+      </div>
+    </div>
+    <div class="collapsible collapsible--expanded">
+      <header class="collapsible__header">
+        <h2 class="collapsible__heading">Item 1</h2>
+        
+        <i
+          class="icon fa-solid fa-chevron-up collapsible__chevron"
+        ></i>
+      </header>
+      <div class="collapsible__content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat,
+        pariatur.
+      </div>
+    </div>
+    <script src="js/main.js"></script>
   </body>
 </html>
