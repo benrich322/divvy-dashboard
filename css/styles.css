@@ -136,4 +136,17 @@ body {
 
 .collapsible__list {
     padding: 0px 0px 0px 5px;
+    margin: 16px;
+    position: relative;
+}
+
+.collapsible__list:hover::before {
+    content: "";
+    position: absolute;
+    top: -8px; /* Adjust to match your margin-top value */
+    right: -16px;
+    bottom: -8px; /* Adjust to match your margin-bottom value */
+    left: -16px;
+    background-color: lightgray;
+    z-index: -1;
 }
