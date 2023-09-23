@@ -1,5 +1,5 @@
 // Initialize the map
-var map = L.map('map-container').setView([51.505, -0.09], 13); // Replace with your desired coordinates and zoom level
+var map = L.map('map').setView([51.505, -0.09], 13); // Replace with your desired coordinates and zoom level
 
 // Add a base tile layer (e.g., OpenStreetMap)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
