@@ -168,3 +168,18 @@ html {
     background-color: lightgray;
     z-index: -1;
 }
+
+/* Map */
+
+.map__container {
+    width: 65vh;
+    height: 85vh;
+    background-color: grey;
+}
+
+.map__layout {
+    width: 90%;
+    height: 90%;
+    z-index: 1;
+}
+
