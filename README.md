@@ -1,3 +1,3 @@
 # divvy-dashboard
 
-![Alt text](image.png)
+![Alt text](images/system_architecture.png)
