@@ -1,6 +1,6 @@
 # divvy-dashboard
 
-![Alt text](images/system_architecture.png)
+![Alt text](images/system_architecture.jpg)
 
 
 Map Selections
