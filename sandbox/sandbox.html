@@ -3,16 +3,111 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leaflet Map</title>
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/7becdf7318.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- Include Leaflet CSS -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <section>
+    <header class="header">
+      <h1 class="header__content">
+        <i class="fa-solid fa-bicycle"></i>
+        Divvy Dashboard
+      </h1>
+    </header>
+    <section class="sidebar">
+      <ul class="sidebar__list">
+        <li class="sidebar__selection">
+          <i class="sidebar__icon fa-solid fa-map"></i
+          ><span class="sidebar__text">Map</span>
+        </li>
+        <li class="sidebar__selection">
+          <i class="sidebar__icon fa-solid fa-cloud"></i
+          ><span class="sidebar__text">Weather</span>
+        </li>
+        <li class="sidebar__selection">
+          <i class="sidebar__icon fa-solid fa-trophy"></i
+          ><span class="sidebar__text">Records</span>
+        </li>
+      </ul>
+    </section>
+    <section class="collapsible__block">
+      <div class="collapsible__container">
+        <div class="collapsible">
+          <div class="collapsible__header">
+            <p class="collapsible__heading">Location</p>
+            <p class="collapsible__selection">
+              <span id="selectedOption0" class="collapsible__selected-option"
+                >City</span
+              >
+              <i class="fa-solid fa-chevron-up collapsible__chevron"></i>
+            </p>
+          </div>
+          <ul class="collapsible__content">
+            <li class="collapsible__list" value="city">City</li>
+            <li class="collapsible__list" value="ward">Ward</li>
+            <li class="collapsible__list" value="community_area">
+              Community Area
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="collapsible__container">
+        <div class="collapsible">
+          <div class="collapsible__header">
+            <p class="collapsible__heading">Location</p>
+            <p class="collapsible__selection">
+              <span
+                id="selectedOption1"
+                class="collapsible__selected-option"
+              ></span>
+              <i class="fa-solid fa-chevron-up collapsible__chevron"></i>
+            </p>
+          </div>
+          <ul class="collapsible__content test2">
+            <!-- List items will be dynamically populated here -->
+          </ul>
+        </div>
+      </div>
+      <div class="collapsible__container">
+        <div class="collapsible">
+          <div class="collapsible__header">
+            <p class="collapsible__heading">Station Selection</p>
+            <p class="collapsible__selection">
+              <span
+                id="selectedOption2"
+                class="collapsible__selected-option"
+              ></span>
+              <i class="fa-solid fa-chevron-up collapsible__chevron"></i>
+            </p>
+          </div>
+          <ul class="collapsible__content">
+            <li class="collapsible__list">Option 1</li>
+            <li class="collapsible__list">Option 2</li>
+            <li class="collapsible__list">Option 3</li>
+            <li class="collapsible__list">Option 1</li>
+            <li class="collapsible__list">Option 1</li>
+            <li class="collapsible__list">Option 2</li>
+            <li class="collapsible__list">Option 3</li>
+            <li class="collapsible__list">Option 1</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="map__block">
       <div class="map__container">
         <h2 class="map__title">Bike Station Map for the City of Chicago</h2>
         <div id="map" class="map"></div>
@@ -20,14 +115,12 @@
       </div>
     </section>
 
-
-
-    <!-- JS -->
+    <script src="sandbox.js"></script>
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
-    <script src="js/script.js"></script>
+    <script src="../js/map.js"></script>
   </body>
 </html>
