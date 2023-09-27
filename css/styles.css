@@ -136,6 +136,13 @@ html {
     justify-content: space-between;
 }
 
+.collapsible--expanded .collapsible__content {
+    max-height: 100vh;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
 .collapsible__content {
     position: relative;
     list-style: none;
@@ -148,13 +155,6 @@ html {
     border-radius: 5px;
     margin: -1rem 1rem 0rem 1rem;
 }
-
-.collapsible--expanded .collapsible__content {
-    max-height: 100vh;
-    opacity: 1;
-    pointer-events: auto;
-}
-
 
 .collapsible__list {
     position: relative;

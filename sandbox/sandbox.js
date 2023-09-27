@@ -71,7 +71,7 @@ function setupLocationTypeDropdown(item, locationDropdown) {
             const selectedLocationType = event.target.getAttribute("value");
 
             // Define the different dropdown where you want to populate the options
-            const anotherDropdown = document.querySelector(".test2");
+            const anotherDropdown = document.querySelector(".selection_reference");
             console.log('anotherDropdown',anotherDropdown)
 
             // Fetch and filter the JSON data based on the selected "Location Type"
