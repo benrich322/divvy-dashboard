@@ -4,8 +4,26 @@ async function fetchDataIfNeeded() {
   if (!jsonData) {
     const response = await fetch('https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/stations');
     jsonData = await response.json();
+
+    // Loop through each object in the JSON data array
+    jsonData.forEach(station => {
+      // Capitalize the 'city' property
+      if (station.city) {
+        station.city = capitalizeWord(station.city);
+      }
+
+      // Capitalize the 'community_area' property
+      if (station.community_area) {
+        station.community_area = capitalizeWord(station.community_area);
+      }
+    });
   }
 }
+
+function capitalizeWord(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
+
 
 // Function to set default values for span elements
 function setDefaultValues() {
