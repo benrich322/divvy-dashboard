@@ -43,7 +43,10 @@ def welcome():
     return (
         "Available Routes:<br/>"
         "/api/v1.0/stations<br/>"
+        "/api/v1.0/city_boundary<br/>"
         "/api/v1.0/community_area_boundary<br/>"
+        "/api/v1.0/neighborhood_boundary<br/>"
+        "/api/v1.0/ward_boundary<br/>"
     )
 
 @app.route("/api/v1.0/stations")
@@ -52,6 +55,19 @@ def stations():
     station_cursor = station_names.find()
     station_data = list(station_cursor)
     return jsonify(station_data)
+
+@app.route("/api/v1.0/city_boundary")
+def city_boundary():
+    """Return the geojson of city_boundary."""
+    base_directory = os.path.dirname(__file__)
+    city_geojson_file_path = os.path.join(base_directory, "../database_components/location_data/chicago_city.geojson")
+    city_area_boundary_geojson = read_geojson_file(city_geojson_file_path)
+    if city_area_boundary_geojson:
+        print("GeoJSON Data:")
+        print(city_area_boundary_geojson)  # Debug print
+        return jsonify(city_area_boundary_geojson)
+    else:
+        return jsonify({"error": "GeoJSON data is missing or malformed"})
 
 @app.route("/api/v1.0/community_area_boundary")
 def community_area_boundary():
@@ -63,6 +79,32 @@ def community_area_boundary():
         print("GeoJSON Data:")
         print(community_area_boundary_geojson)  # Debug print
         return jsonify(community_area_boundary_geojson)
+    else:
+        return jsonify({"error": "GeoJSON data is missing or malformed"})
+
+@app.route("/api/v1.0/neighborhood_boundary")
+def neighborhood_boundary():
+    """Return the geojson of neighborhood_boundary."""
+    base_directory = os.path.dirname(__file__)
+    neighborhood_geojson_file_path = os.path.join(base_directory, "../database_components/location_data/chicago_neighborhoods.geojson")
+    neighborhood_area_boundary_geojson = read_geojson_file(neighborhood_geojson_file_path)
+    if neighborhood_area_boundary_geojson:
+        print("GeoJSON Data:")
+        print(neighborhood_area_boundary_geojson)  # Debug print
+        return jsonify(neighborhood_area_boundary_geojson)
+    else:
+        return jsonify({"error": "GeoJSON data is missing or malformed"})
+
+@app.route("/api/v1.0/ward_boundary")
+def ward_boundary():
+    """Return the geojson of ward_boundary."""
+    base_directory = os.path.dirname(__file__)
+    ward_geojson_file_path = os.path.join(base_directory, "../database_components/location_data/chicago_wards.geojson")
+    ward_area_boundary_geojson = read_geojson_file(ward_geojson_file_path)
+    if ward_area_boundary_geojson:
+        print("GeoJSON Data:")
+        print(ward_area_boundary_geojson)  # Debug print
+        return jsonify(ward_area_boundary_geojson)
     else:
         return jsonify({"error": "GeoJSON data is missing or malformed"})
 
