@@ -26,10 +26,14 @@ function capitalizeWord(word) {
 
 
 // Function to set default values for span elements
-function setDefaultValues() {
-    document.getElementById('selectedOption0').textContent = 'City';
-    document.getElementById('selectedOption1').textContent = 'Chicago';
-    document.getElementById('selectedOption2').textContent = 'Top 10';
+async function setDefaultValues() {
+  document.getElementById('selectedOption0').textContent = 'City';
+  document.getElementById('selectedOption1').textContent = 'Chicago';
+  document.getElementById('selectedOption2').textContent = 'Top 10';
+
+  await fetchDataIfNeeded(); // Wait for data to be fetched
+  const selectedOptions = getSelectedOptionsText();
+  const matchingStations = findMatchingStations(selectedOptions, jsonData);
 }
 
 function handleCollapsibleSelection(index) {
@@ -58,6 +62,13 @@ function handleCollapsibleSelection(index) {
           item.addEventListener('click', function (event) {
             // Update the selectedOption value based on the clicked item
             selectedOption.textContent = event.target.textContent;
+
+            // New code
+            fetchDataIfNeeded();
+            const selectedOptions = getSelectedOptionsText();
+            const matchingStations = findMatchingStations(selectedOptions, jsonData);
+            createMarkers(matchingStations, map);
+            //
 
             // Set the value attribute of selectedOption0 based on the clicked item's value attribute
             selectedOption0.setAttribute('value', event.target.getAttribute('value'));
@@ -135,6 +146,7 @@ const numCollapsibles = 3; // Adjust this as needed
 for (let index = 0; index < numCollapsibles; index++) {
   handleCollapsibleSelection(index);
 }
+  
 
 
 
