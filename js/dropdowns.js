@@ -1,4 +1,5 @@
 let jsonData = null;
+var geojsonData = null;
 
 async function fetchDataIfNeeded() {
   if (!jsonData) {
@@ -18,6 +19,23 @@ async function fetchDataIfNeeded() {
       }
     });
   }
+}
+
+// Function to fetch GeoJSON data
+function fetchGeoJSONData() {
+  // URL to fetch the GeoJSON data
+  var geojsonUrl = "https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/community_area_boundary";
+
+  return fetch(geojsonUrl)
+      .then(function(response) {
+          return response.json();
+      })
+      .then(function(data) {
+          geojsonData = data; // Store the fetched data in the variable
+      })
+      .catch(function(error) {
+          console.error("Error fetching GeoJSON data: " + error);
+      });
 }
 
 function capitalizeWord(word) {
