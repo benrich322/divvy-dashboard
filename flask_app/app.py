@@ -57,7 +57,10 @@ def stations():
 @app.route("/api/v1.0/community_area_boundary")
 def community_area_boundary():
     """Return the geojson of community_area_boundary."""
-    community_area_boundary_geojson
+    if community_area_boundary_geojson:
+        return jsonify(community_area_boundary_geojson)
+    else:
+        return jsonify({"error": "GeoJSON data is missing or malformed"})
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 8080))
