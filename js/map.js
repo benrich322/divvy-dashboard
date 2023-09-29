@@ -1,117 +1,115 @@
-//// Sandbox Testing ////
-
+// This function finds the selections of location type and location
 function getSelectedOptionsText() {
+    // It creates a box to hold the choices.
     const selectedOptions = {
+        // Inside the box, there are two things to know:
+
+        // 1. Find the value attribute of the locatoin type selection in index.html
         option0: document.getElementById("selectedOption0").getAttribute("value"),
+
+        // 2. Find the selection of the location dropdown
         option1: document.getElementById("selectedOption1").textContent,
     };
+
+    // After looking at these things, we put the choices in our box.
     return selectedOptions;
 }
 
+// This function helps find things that match the location type and locatoin selections.
 function findMatchingStationsnew(selectedOptions, jsonData) {
-   // selectedOptions.option0 = selectedOptions.option0.toLowerCase();
-    // Initialize an array to store the matching bike stations
+    // It has a list to collect things that match the choices.
     const matchingStations = [];
-    
-    // Loop through the JSON data to find matches
+
+    // It looks at each thing in a big list of information.
     jsonData.forEach(station => {
-        // Check if the station has a property that exactly matches selectedOptions.option0
+        // If a the location type and locaton match with the jsondata,
         if (station[selectedOptions.option0] === selectedOptions.option1) {
+          // add that thing to our list.
           matchingStations.push(station);
         }
     });  
-    // Return the array of matching bike stations
+
+    // After looking at all the things, give the list to the computer.
     return matchingStations;
 }
 
-// Function to create map markers for an array of coordinates
+// This function helps create the markers on a map
 function createMarkers(coordinatesArray, map) {
+    // It looks at each set of coordinates in a list.
     coordinatesArray.forEach(coordinate => {
+      // It takes the information about that place.
       const { lat, lng, station_name, ride_count } = coordinate;
-  
-      // Create a marker for the current coordinate
+      // It puts a marker on that place on the map.
       const marker = L.marker([lat, lng]).addTo(map);
-      // Add a popup with station information
+      // It writes the ride count on the marker popup.
       marker.bindPopup(
         `<b>${station_name}</b><br>Ride Count: ${ride_count}`
       );
     });
 }
 
-// Function to clear all markers and borders from the map
-function clearMarkersAndBorders(map) {
-    map.eachLayer(layer => {
-        if (layer instanceof L.Marker || layer instanceof L.GeoJSON) {
-            // Check if the layer is a marker or GeoJSON layer
-            map.removeLayer(layer); // Remove the marker or GeoJSON layer from the map
-        }
-    });
-}
-
-// Function to display community area border
+// This function helps create a border on the map.
 function displayCommunityAreaBorder(selectedOptions, leafletMap) {
-    // Parse the selected options to get the community area name
-    var communityAreaName = selectedOptions.option1;
+    // It looks at a name.
+    let communityAreaName = selectedOptions.option1;
+    // It makes the name uppercase.
     communityAreaName = communityAreaName.toUpperCase();
-
-    // Ensure that the GeoJSON data is loaded
     if (!geojsonData) {
-        // If not loaded, fetch the data first
+        // If we don't have GeoJSON data yet
         fetchGeoJSONData().then(function() {
+            // It asks for the map and shows the border on the map.
             displayBorderWithGeoJSON(communityAreaName, leafletMap);
         });
     } else {
-        // If already loaded, display the border using the stored data
+        // If we already have the map,
         displayBorderWithGeoJSON(communityAreaName, leafletMap);
     }
 }
 
-// Function to display border using GeoJSON data with custom styling
+// This function helps display the border on the map.
 function displayBorderWithGeoJSON(communityAreaName, leafletMap) {
-    // Find the GeoJSON feature corresponding to the selected community area
-    var selectedFeature = null;
+    // declaring a variable and setting to null
+    let selectedFeature = null;
 
+    // It checks each part of the map Geojson data to find the one that matches the name.
     geojsonData.features.forEach(function(feature) {
         if (feature.properties.community === communityAreaName) {
             selectedFeature = feature;
         }
     });
 
+    // If it finds the match,
     if (selectedFeature) {
-        // Define custom styling options
-        var customStyle = {
+        // It draws a blue border around it.
+        const customStyle = {
             color: 'blue',       // Border color
             weight: 2,          // Border weight
             fillColor: 'lightblue',  // Fill color
             fillOpacity: 0.5    // Fill opacity
         };
-
-        // Create a GeoJSON layer with custom styling
-        var geojsonLayer = L.geoJSON(selectedFeature, {
+        const geojsonLayer = L.geoJSON(selectedFeature, {
             style: customStyle
         });
-
-        // Add the GeoJSON layer to the map
         geojsonLayer.addTo(leafletMap);
 
-        // Fit the map to the bounds of the GeoJSON layer
+        // It makes the map move to the center of the border
         leafletMap.fitBounds(geojsonLayer.getBounds());
     } else {
+        // If it can't find a match, it says there's a problem.
         console.log("Community area '" + communityAreaName + "' not found in GeoJSON data.");
     }
 }
-    
-// Initialize the map
-var map = L.map('map').setView([41.8781, -87.6298], 13);
 
-// Add a base tile layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+// This function clears markers and boarders on the map.
+function clearMarkersAndBorders(map) {
+    // It goes through everything on the map.
+    map.eachLayer(layer => {
+        // If it's a marker or a line (border),
+        if (layer instanceof L.Marker || layer instanceof L.GeoJSON) {
+            // It removes it from the map.
+            map.removeLayer(layer);
+        }
+    });
+}
 
-const selectedOptions = getSelectedOptionsText();
-
-  
-  
-  
 
