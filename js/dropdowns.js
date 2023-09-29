@@ -33,14 +33,14 @@ async function setDefaultValues() {
 
   await fetchDataIfNeeded(); // Wait for data to be fetched
   const selectedOptions = getSelectedOptionsText();
-  const matchingStations = findMatchingStations(selectedOptions, jsonData);
+  //const matchingStations = findMatchingStations(selectedOptions, jsonData);
 }
 
 function handleCollapsibleSelection(index) {
     const collapsibleClick = document.querySelectorAll('.collapsible__selection')[index];
     const collapsible = document.querySelectorAll('.collapsible')[index];
     const selectedOption = document.getElementById(`selectedOption${index}`);
-  
+    console.log('check',selectedOption)
     // Add a click event listener to the collapsible header
     collapsibleClick.addEventListener('click', function () {
       // Collapse all other collapsible elements first
@@ -61,8 +61,8 @@ function handleCollapsibleSelection(index) {
         collapsibleListItems.forEach((item) => {
           item.addEventListener('click', function (event) {
             // Update the selectedOption value based on the clicked item
+            console.log(selectedOption)
             selectedOption.textContent = event.target.textContent;
-            console.log('selectedOption0',selectedOption0)
             // New code
             clearMarkers(map);
             fetchDataIfNeeded();
@@ -71,33 +71,34 @@ function handleCollapsibleSelection(index) {
             createMarkers(matchingStations, map);
             //
 
-            // Set the value attribute of selectedOption0 based on the clicked item's value attribute
-            selectedOption0.setAttribute('value', event.target.getAttribute('value'));
+            // Set the value attribute of loction_type_selection based on the clicked item's value attribute
+            selectedOption.setAttribute('value', event.target.getAttribute('value'));
+            console.log(loction_type_selection)
             // Collapse the collapsible content by removing the 'collapsible--expanded' class
             collapsible.classList.remove('collapsible--expanded');
           });
         });
   
-        // Get a reference to selectedOption0
-        const selectedOption0 = document.getElementById('selectedOption0');
+        // Get a reference to loction_type_selection
+        const loction_type_selection = document.getElementById('selectedOption0');
         const selectedOption1 = document.getElementById('selectedOption1');
 
-        // Initialize the MutationObserver to watch for changes in selectedOption0's textContent
+        // Initialize the MutationObserver to watch for changes in loction_type_selection's textContent
         const observer = new MutationObserver(function (mutationsList) {
           for (let mutation of mutationsList) {
-            if (mutation.type === 'childList' && mutation.target === selectedOption0) {
+            if (mutation.type === 'childList' && mutation.target === loction_type_selection) {
               selectedOption1.textContent = '';
-              // Call the populateDynamicList function when selectedOption0 class text content changes
+              // Call the populateDynamicList function when loction_type_selection class text content changes
               populateDynamicList();
             }
           }
         });
   
-        // Configure the observer to watch for changes in the child nodes (content) of selectedOption0
+        // Configure the observer to watch for changes in the child nodes (content) of loction_type_selection
         const observerConfig = { childList: true };
   
-        // Start observing selectedOption0
-        observer.observe(selectedOption0, observerConfig);
+        // Start observing loction_type_selection
+        observer.observe(loction_type_selection, observerConfig);
       }
     });
 }

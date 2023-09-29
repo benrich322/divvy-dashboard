@@ -3,30 +3,9 @@
 function getSelectedOptionsText() {
     const selectedOptions = {
         option0: document.getElementById("selectedOption0").getAttribute("value"),
-
         option1: document.getElementById("selectedOption1").textContent,
     };
     return selectedOptions;
-}
-
-function findMatchingStations(selectedOptions, jsonData) {
-    // Initialize an array to store the matching bike stations
-    const matchingStations = [];
-    
-    // Loop through the JSON data to find matches
-    jsonData.forEach(station => {
-       
-      // Check if the station's properties match the selected options
-      if (
-        selectedOptions.option0 === 'Ward' &&
-        selectedOptions.option1 === station.ward
-      ) {
-        matchingStations.push(station);
-      }
-    });
-  
-    // Return the array of matching bike stations
-    return matchingStations;
 }
 
 function findMatchingStationsnew(selectedOptions, jsonData) {

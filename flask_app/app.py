@@ -16,6 +16,21 @@ mongo = MongoClient(mongo_uri)
 db = mongo.get_default_database()
 station_names = db['station_names']
 
+
+def read_geojson_file(file_path):
+    try:
+        with open(file_path, "r") as geojson_file:
+            geojson_data = json.load(geojson_file)
+        return geojson_data
+    except Exception as e:
+        print(f"Error reading GeoJSON file: {str(e)}")
+        return None
+
+# Specify the path to your GeoJSON file
+geojson_file_path = "../database_components/location_data/chicago_community_area.geojson"
+community_area_boundary_geojson = read_geojson_file(geojson_file_path)
+
+
 # Define your Flask routes
 
 ####################################################
@@ -28,6 +43,7 @@ def welcome():
     return (
         "Available Routes:<br/>"
         "/api/v1.0/stations<br/>"
+        "/api/v1.0/community_area_boundary<br/>"
     )
 
 @app.route("/api/v1.0/stations")
@@ -36,6 +52,14 @@ def stations():
     station_cursor = station_names.find()
     station_data = list(station_cursor)
     return jsonify(station_data)
+
+@app.route("/api/v1.0/stations")
+def community_area_boundary():
+    """Return the geojson of community_area_boundary."""
+    community_area_boundary_geojson
+    return jsonify(community_area_boundary_geojson)
+
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 8080))
