@@ -2,7 +2,8 @@
 
 function getSelectedOptionsText() {
     const selectedOptions = {
-        option0: document.getElementById("selectedOption0").textContent,
+        option0: document.getElementById("selectedOption0").getAttribute("value"),
+
         option1: document.getElementById("selectedOption1").textContent,
     };
     return selectedOptions;
@@ -25,7 +26,22 @@ function findMatchingStations(selectedOptions, jsonData) {
     });
   
     // Return the array of matching bike stations
-    console.log('matching',matchingStations);
+    return matchingStations;
+}
+
+function findMatchingStationsnew(selectedOptions, jsonData) {
+   // selectedOptions.option0 = selectedOptions.option0.toLowerCase();
+    // Initialize an array to store the matching bike stations
+    const matchingStations = [];
+    
+    // Loop through the JSON data to find matches
+    jsonData.forEach(station => {
+        // Check if the station has a property that exactly matches selectedOptions.option0
+        if (station[selectedOptions.option0] === selectedOptions.option1) {
+          matchingStations.push(station);
+        }
+    });  
+    // Return the array of matching bike stations
     return matchingStations;
 }
 
@@ -42,6 +58,16 @@ function createMarkers(coordinatesArray, map) {
       );
     });
 }
+
+// Function to clear all markers from the map
+function clearMarkers(map) {
+    map.eachLayer(layer => {
+      if (layer instanceof L.Marker) {
+        // Check if the layer is a marker
+        map.removeLayer(layer); // Remove the marker from the map
+      }
+    });
+  }
     
 // Initialize the map
 var map = L.map('map').setView([41.8781, -87.6298], 13);

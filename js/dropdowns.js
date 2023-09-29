@@ -29,7 +29,7 @@ function capitalizeWord(word) {
 async function setDefaultValues() {
   document.getElementById('selectedOption0').textContent = 'City';
   document.getElementById('selectedOption1').textContent = 'Chicago';
-  document.getElementById('selectedOption2').textContent = 'Top 10';
+  document.getElementById('selectedOption2').textContent = 'All';
 
   await fetchDataIfNeeded(); // Wait for data to be fetched
   const selectedOptions = getSelectedOptionsText();
@@ -62,17 +62,17 @@ function handleCollapsibleSelection(index) {
           item.addEventListener('click', function (event) {
             // Update the selectedOption value based on the clicked item
             selectedOption.textContent = event.target.textContent;
-
+            console.log('selectedOption0',selectedOption0)
             // New code
+            clearMarkers(map);
             fetchDataIfNeeded();
             const selectedOptions = getSelectedOptionsText();
-            const matchingStations = findMatchingStations(selectedOptions, jsonData);
+            const matchingStations = findMatchingStationsnew(selectedOptions, jsonData);
             createMarkers(matchingStations, map);
             //
 
             // Set the value attribute of selectedOption0 based on the clicked item's value attribute
             selectedOption0.setAttribute('value', event.target.getAttribute('value'));
-  
             // Collapse the collapsible content by removing the 'collapsible--expanded' class
             collapsible.classList.remove('collapsible--expanded');
           });
@@ -110,7 +110,7 @@ async function populateDynamicList() {
       
       // Get the selected option text
       const selectedOptionValue = document.getElementById('selectedOption0').getAttribute('value');
-
+      console.log(selectedOptionValue)
       // Filter the JSON data for unique values of the selected option
       const uniqueValues = [...new Set(jsonData.map(item => item[selectedOptionValue]))];
       
