@@ -35,7 +35,7 @@ community_area_boundary_geojson = read_geojson_file(geojson_file_path)
 
 ####################################################
 # Flask Routes
-###################################################
+####################################################
 
 @app.route("/")
 def welcome():
