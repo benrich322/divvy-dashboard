@@ -27,9 +27,8 @@ def read_geojson_file(file_path):
         print(f"Error reading GeoJSON file: {str(e)}")
         return None
 
-# Specify the path to your GeoJSON file
-geojson_file_path = "../database_components/location_data/chicago_community_area.geojson"
-community_area_boundary_geojson = read_geojson_file(geojson_file_path)
+
+
 
 
 # Define your Flask routes
@@ -57,6 +56,8 @@ def stations():
 @app.route("/api/v1.0/community_area_boundary")
 def community_area_boundary():
     """Return the geojson of community_area_boundary."""
+    geojson_file_path = "../database_components/location_data/chicago_community_area.geojson"
+    community_area_boundary_geojson = read_geojson_file(geojson_file_path)
     if community_area_boundary_geojson:
         print("GeoJSON Data:")
         print(community_area_boundary_geojson)  # Debug print
