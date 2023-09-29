@@ -3,9 +3,6 @@ function main() {
     // Get the selected options from the dropdowns.
     const selectedOptions = getSelectedOptionsText();
 
-    // Set default values for the page elements.
-    setDefaultValues();
-
     // Populate the dynamic selection list based on the selected options.
     populateDynamicList();
 
@@ -16,7 +13,11 @@ function main() {
     for (let index = 0; index < numCollapsibles; index++) {
         handleCollapsibleSelection(index);
     }
+    
 }
+
+// Call the main function when the page loads.
+window.onload = main;
 
 // This function handles changes in the selected options.
 function handleSelectionChange(map) {
@@ -39,9 +40,6 @@ function handleSelectionChange(map) {
     displayCommunityAreaBorder(selectedOptions, map);
 }
 
-// Call the main function when the page loads.
-window.onload = main;
-
 // Initialize the map with a specific view.
 const map = L.map('map').setView([41.8781, -87.6298], 13);
 
@@ -49,4 +47,5 @@ const map = L.map('map').setView([41.8781, -87.6298], 13);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
+
 
