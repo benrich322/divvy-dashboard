@@ -58,9 +58,12 @@ def stations():
 def community_area_boundary():
     """Return the geojson of community_area_boundary."""
     if community_area_boundary_geojson:
+        print("GeoJSON Data:")
+        print(community_area_boundary_geojson)  # Debug print
         return jsonify(community_area_boundary_geojson)
     else:
         return jsonify({"error": "GeoJSON data is missing or malformed"})
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 8080))
