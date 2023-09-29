@@ -64,7 +64,7 @@ function handleCollapsibleSelection(index) {
             console.log(selectedOption)
             selectedOption.textContent = event.target.textContent;
             // New code
-            clearMarkers(map);
+            clearMarkersAndBorders(map);
             fetchDataIfNeeded();
             const selectedOptions = getSelectedOptionsText();
             const matchingStations = findMatchingStationsnew(selectedOptions, jsonData);

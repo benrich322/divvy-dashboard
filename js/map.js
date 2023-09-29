@@ -38,13 +38,13 @@ function createMarkers(coordinatesArray, map) {
     });
 }
 
-// Function to clear all markers from the map
-function clearMarkers(map) {
+// Function to clear all markers and borders from the map
+function clearMarkersAndBorders(map) {
     map.eachLayer(layer => {
-      if (layer instanceof L.Marker) {
-        // Check if the layer is a marker
-        map.removeLayer(layer); // Remove the marker from the map
-      }
+        if (layer instanceof L.Marker || layer instanceof L.GeoJSON) {
+            // Check if the layer is a marker or GeoJSON layer
+            map.removeLayer(layer); // Remove the marker or GeoJSON layer from the map
+        }
     });
 }
 
