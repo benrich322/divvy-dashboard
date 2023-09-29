@@ -68,7 +68,9 @@ function handleCollapsibleSelection(index) {
             fetchDataIfNeeded();
             const selectedOptions = getSelectedOptionsText();
             const matchingStations = findMatchingStationsnew(selectedOptions, jsonData);
+            console.log('selectedOptions',selectedOptions)
             createMarkers(matchingStations, map);
+            displayCommunityAreaBorder(selectedOptions, map);
             //
 
             // Set the value attribute of loction_type_selection based on the clicked item's value attribute
