@@ -19,7 +19,6 @@ function getSelectedOptionsText() {
 function findMatchingStationsnew(selectedOptions, jsonData) {
     // It has a list to collect things that match the choices.
     const matchingStations = [];
-
     // It looks at each thing in a big list of information.
     jsonData.forEach(station => {
         // If a the location type and locaton match with the jsondata,
@@ -53,7 +52,6 @@ function displayCommunityAreaBorder(selectedOptions, leafletMap) {
     // It looks at a name.
     let location_type_selection = selectedOptions.option0;
     let location_selection = selectedOptions.option1;
-    console.log('check',selectedOptions.option0)
     // It makes the name uppercase.
     location_selection = location_selection.toUpperCase();
     if (!geojsonData) {

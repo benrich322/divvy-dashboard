@@ -13,32 +13,38 @@ function main() {
     for (let index = 0; index < numCollapsibles; index++) {
         handleCollapsibleSelection(index);
     }
-    
+    handleSelectionChange(map);
 }
 
 // Call the main function when the page loads.
 window.onload = main;
 
 // This function handles changes in the selected options.
-function handleSelectionChange(map) {
-    // Clear any existing markers and borders on the map.
-    clearMarkersAndBorders(map);
+async function handleSelectionChange(map) {
+    try {
+        // Clear any existing markers and borders on the map.
+        clearMarkersAndBorders(map);
 
-    // Fetch station data from the internet.
-    fetchStationData();
+        // Fetch station data from the internet and wait for it to complete.
+        await fetchStationData();
 
-    // Get the selected options from the dropdowns.
-    const selectedOptions = getSelectedOptionsText();
+        // Get the selected options from the dropdowns.
+        const selectedOptions = getSelectedOptionsText();
 
-    // Find stations that match the selected options.
-    const matchingStations = findMatchingStationsnew(selectedOptions, jsonData);
+        // Find stations that match the selected options.
+        const matchingStations = findMatchingStationsnew(selectedOptions, jsonData);
 
-    // Create markers on the map for the matching stations.
-    createMarkers(matchingStations, map);
+        // Create markers on the map for the matching stations.
+        createMarkers(matchingStations, map);
 
-    // Display the community area border on the map.
-    displayCommunityAreaBorder(selectedOptions, map);
+        // Display the community area border on the map.
+        displayCommunityAreaBorder(selectedOptions, map);
+    } catch (error) {
+        // Handle any errors that occur during the process.
+        console.error("Error handling selection change:", error);
+    }
 }
+
 
 // Initialize the map with a specific view.
 const map = L.map('map').setView([41.8781, -87.6298], 13);

@@ -14,7 +14,7 @@ async function fetchStationData() {
 
     // Put the data into the general information box (jsonData).
     jsonData = await response.json();
-
+    console.log('jsonData',jsonData)
     // Next, look at all the pieces of information (stations) in our box.
     jsonData.forEach(station => {
       if (station.city) { // If there's a word called 'city' in the information,

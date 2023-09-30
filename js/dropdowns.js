@@ -4,7 +4,6 @@ function capitalizeWord(word) {
 }
 
 // This function helps create the dropdown user flow
-// This function helps create the dropdown user flow
 function handleCollapsibleSelection(index) {
   // It's like, "When someone clicks on the dropdown, do some things."
 
