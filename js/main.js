@@ -7,7 +7,7 @@ function main() {
     populateDynamicList();
 
     // Define the number of collapsibles to handle (in this case, 3).
-    const numCollapsibles = 3;
+    const numCollapsibles = 2;
 
     // Loop through the collapsibles and set up their behavior.
     for (let index = 0; index < numCollapsibles; index++) {
@@ -39,6 +39,10 @@ async function handleSelectionChange(map) {
 
         // Display the community area border on the map.
         displayCommunityAreaBorder(selectedOptions, map);
+
+        //
+        updateTitle();
+
     } catch (error) {
         // Handle any errors that occur during the process.
         console.error("Error handling selection change:", error);

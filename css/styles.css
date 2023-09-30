@@ -88,7 +88,7 @@ html {
     margin: 10px 60px 10px 60px;
     display: flex;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 20px;
   
 }
 
@@ -197,7 +197,6 @@ html {
 
 .map__title {
     margin-top: 10px;
-    margin-right: 280px;
     font-size: 1.5rem; 
     font-weight: bold;
     min-width: 350px;

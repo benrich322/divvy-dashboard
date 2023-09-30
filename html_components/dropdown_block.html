@@ -4,7 +4,12 @@
       <div class="collapsible__header">
         <p class="collapsible__heading">Location Type</p>
         <p class="collapsible__selection">
-          <span id="selectedOption0" class="location_type_selection"></span>
+          <span
+            id="selectedOption0"
+            class="location_type_selection"
+            value="city"
+            >City</span
+          >
           <i class="fa-solid fa-chevron-up collapsible__chevron"></i>
         </p>
       </div>
@@ -21,7 +26,7 @@
       <div class="collapsible__header">
         <p class="collapsible__heading">Location</p>
         <p class="collapsible__selection">
-          <span id="selectedOption1"></span>
+          <span id="selectedOption1">Chicago</span>
           <i class="fa-solid fa-chevron-up collapsible__chevron"></i>
         </p>
       </div>
@@ -29,27 +34,5 @@
         <!-- List items will be dynamically populated here -->
       </ul>
     </div>
-  </div>
-  <div class="collapsible__container">
-    <div class="collapsible">
-      <div class="collapsible__header">
-        <p class="collapsible__heading">Station Selection</p>
-        <p class="collapsible__selection">
-          <span id="selectedOption2"></span>
-          <i class="fa-solid fa-chevron-up collapsible__chevron"></i>
-        </p>
-      </div>
-      <ul class="collapsible__content">
-        <li class="collapsible__list">All</li>
-        <li class="collapsible__list">Top 5</li>
-      </ul>
-    </div>
-  </div>
-</section>
-<section class="map__block">
-  <div class="map__container">
-    <h2 class="map__title">Bike Station Map for the City of Chicago</h2>
-    <div id="map" class="map"></div>
-    <!-- This is where your Leaflet map will be rendered -->
   </div>
 </section>
