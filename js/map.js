@@ -48,32 +48,59 @@ function createMarkers(coordinatesArray, map) {
 }
 
 // This function helps create a border on the map.
+let geojsonDataCache = {}; // Cache for storing fetched GeoJSON data
+
+// This function helps create a border on the map.
 function displayCommunityAreaBorder(selectedOptions, leafletMap) {
+    console.log('selectedOptions', selectedOptions);
     // It looks at a name.
     let location_type_selection = selectedOptions.option0;
     let location_selection = selectedOptions.option1;
+
     // It makes the name uppercase.
-    location_selection = location_selection.toUpperCase();
-    if (!geojsonData) {
-        // If we don't have GeoJSON data yet
-        fetchGeoJSONData(location_type_selection,location_selection).then(function() {
-            // It asks for the map and shows the border on the map.
-            displayBorderWithGeoJSON(location_selection, leafletMap);
-        });
+    if (location_type_selection === 'community_area' || location_type_selection === 'city') {
+        // If location_type_selection is 'community_area', convert the name to uppercase
+        location_selection = location_selection.toUpperCase();
+    }
+
+    // Check if GeoJSON data is already cached
+    if (!geojsonDataCache[location_type_selection]) {
+        // If not cached, fetch and cache the GeoJSON data
+        fetchGeoJSONData(location_type_selection)
+            .then(function (geojsonData) {
+                // After fetching, display the border on the map
+                displayBorderWithGeoJSON(location_type_selection, location_selection, leafletMap, geojsonData);
+            })
+            .catch(function (error) {
+                // Handle any errors here
+                console.error("Error fetching GeoJSON data: " + error);
+            });
     } else {
-        // If we already have the map,
-        displayBorderWithGeoJSON(location_selection, leafletMap);
+        // If already cached, display the border using cached data
+        displayBorderWithGeoJSON(location_type_selection, location_selection, leafletMap, geojsonDataCache[location_type_selection]);
     }
 }
 
-// This function helps display the border on the map.
-function displayBorderWithGeoJSON(location_selection, leafletMap) {
+// This function displays the border on the map.
+function displayBorderWithGeoJSON(location_type_selection, location_selection, leafletMap, geojsonData) {
+    // Check if geojsonData is null or undefined
+    if (!geojsonData) {
+        console.error("GeoJSON data is null or undefined.");
+        return;
+    }
+
     // declaring a variable and setting to null
     let selectedFeature = null;
 
-    // It checks each part of the map Geojson data to find the one that matches the name.
-    geojsonData.features.forEach(function(feature) {
-        if (feature.properties.community === location_selection) {
+    // Iterate through the features in geojsonData to find a match
+    geojsonData.features.forEach(function (feature) {
+        if (
+            (location_type_selection === 'community_area' && feature.properties.community === location_selection) ||
+            (location_type_selection === 'neighborhood' && feature.properties.pri_neigh === location_selection) ||
+            (location_type_selection === 'city' && feature.properties.name === location_selection) ||
+            (location_type_selection === 'ward' && feature.properties.ward === location_selection)
+            // Add more conditions as needed
+        ) {
             selectedFeature = feature;
         }
     });

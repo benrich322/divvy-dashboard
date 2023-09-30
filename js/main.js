@@ -58,4 +58,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+// Fetch and cache all GeoJSON data during application initialization
+fetchAndCacheGeoJSONData().then(() => {
+    // Your application is now ready to use cached GeoJSON data
+    // You can access it using geojsonDataCache[location_type_selection]
+});
+
 

@@ -29,21 +29,54 @@ async function fetchStationData() {
 }
 
 // This function fetches the GeoJSON data for the community areas
-function fetchGeoJSONData(location_type_selection,location_selection) {
-    // Define the URL with the GeoJSON data for the community areas
-    console.log('check5',location_type_selection)
-    const geojsonUrl = "https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/community_area_boundary";
+// This function fetches the GeoJSON data for the community areas
+// Define an object to store cached GeoJSON data
 
-    // Use the magic internet wand (fetch) the GeoJSON data for the community areas
-    return fetch(geojsonUrl)
-      .then(function(response) {
-          return response.json(); // Find the map data and put it in the map box (geojsonData).
-      })
-      .then(function(data) {
-          geojsonData = data;
-      })
-      .catch(function(error) {
-          // If something goes wrong and can't find the map, tell the computer there's an error.
-          console.error("Error fetching GeoJSON data: " + error);
+
+// Define URLs for all location types
+const geojsonUrls = {
+    city: "https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/city_boundary",
+    community_area: "https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/community_area_boundary",
+    neighborhood: "https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/neighborhood_boundary",
+    ward: "https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/ward_boundary"
+};
+
+// Function to fetch and cache all GeoJSON data
+function fetchAndCacheGeoJSONData() {
+    const promises = Object.keys(geojsonUrls).map((locationType) => {
+        const geojsonUrl = geojsonUrls[locationType];
+        return fetch(geojsonUrl)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                geojsonDataCache[locationType] = data; // Cache the fetched data
+            });
+    });
+
+    return Promise.all(promises);
+}
+
+// Function to fetch GeoJSON data for a specific location_type_selection
+function fetchGeoJSONData(location_type_selection) {
+    return new Promise((resolve, reject) => {
+        // Check if GeoJSON data is already cached
+        const cachedData = geojsonDataCache[location_type_selection];
+        if (cachedData) {
+            resolve(cachedData); // Resolve with the cached data
+        } else {
+            reject(new Error("GeoJSON data not found for location_type_selection: " + location_type_selection));
+        }
     });
 }
+
+
+
+
+
+
+
+
