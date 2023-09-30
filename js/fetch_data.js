@@ -29,8 +29,9 @@ async function fetchStationData() {
 }
 
 // This function fetches the GeoJSON data for the community areas
-function fetchGeoJSONData() {
+function fetchGeoJSONData(location_type_selection,location_selection) {
     // Define the URL with the GeoJSON data for the community areas
+    console.log('check5',location_type_selection)
     const geojsonUrl = "https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/community_area_boundary";
 
     // Use the magic internet wand (fetch) the GeoJSON data for the community areas

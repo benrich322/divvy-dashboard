@@ -51,29 +51,31 @@ function createMarkers(coordinatesArray, map) {
 // This function helps create a border on the map.
 function displayCommunityAreaBorder(selectedOptions, leafletMap) {
     // It looks at a name.
-    let communityAreaName = selectedOptions.option1;
+    let location_type_selection = selectedOptions.option0;
+    let location_selection = selectedOptions.option1;
+    console.log('check',selectedOptions.option0)
     // It makes the name uppercase.
-    communityAreaName = communityAreaName.toUpperCase();
+    location_selection = location_selection.toUpperCase();
     if (!geojsonData) {
         // If we don't have GeoJSON data yet
-        fetchGeoJSONData().then(function() {
+        fetchGeoJSONData(location_type_selection,location_selection).then(function() {
             // It asks for the map and shows the border on the map.
-            displayBorderWithGeoJSON(communityAreaName, leafletMap);
+            displayBorderWithGeoJSON(location_selection, leafletMap);
         });
     } else {
         // If we already have the map,
-        displayBorderWithGeoJSON(communityAreaName, leafletMap);
+        displayBorderWithGeoJSON(location_selection, leafletMap);
     }
 }
 
 // This function helps display the border on the map.
-function displayBorderWithGeoJSON(communityAreaName, leafletMap) {
+function displayBorderWithGeoJSON(location_selection, leafletMap) {
     // declaring a variable and setting to null
     let selectedFeature = null;
 
     // It checks each part of the map Geojson data to find the one that matches the name.
     geojsonData.features.forEach(function(feature) {
-        if (feature.properties.community === communityAreaName) {
+        if (feature.properties.community === location_selection) {
             selectedFeature = feature;
         }
     });
@@ -96,7 +98,7 @@ function displayBorderWithGeoJSON(communityAreaName, leafletMap) {
         leafletMap.fitBounds(geojsonLayer.getBounds());
     } else {
         // If it can't find a match, it says there's a problem.
-        console.log("Community area '" + communityAreaName + "' not found in GeoJSON data.");
+        console.log("Community area '" + location_selection + "' not found in GeoJSON data.");
     }
 }
 
