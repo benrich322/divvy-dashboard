@@ -148,11 +148,11 @@ function updateTitle() {
     if (selectedOption1.trim() === "") {
         // If it's blank, show a message to make a selection
         const titleElement = document.querySelector(".map__title");
-        let newTitle = `Divvy Station Map for ${selectedOption0}: Select a Location`;
+        let newTitle = `Divvy Station Map ${selectedOption0}: Select a Location`;
         titleElement.textContent = newTitle;
     } else {
         // Combine the text content to form the new title
-        let newTitle = `Divvy Station Map for ${selectedOption0}: ${selectedOption1}`;
+        let newTitle = `Divvy Station Map ${selectedOption0}: ${selectedOption1}`;
 
         // Update the title element with the new title
         const titleElement = document.querySelector(".map__title");
