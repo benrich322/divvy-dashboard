@@ -1,16 +1,23 @@
-// react.js
+function filterDataByCommunityArea(table_content, data) {
+  // Use the Array.prototype.filter() method to filter the data
+  const new_data = data.filter(item => {
+    // Log the value of item.community_area
 
-import React from 'react';
-import MyComponent from '../react/data_grid'; // Adjust the import path based on your project structure
-
-function App() {
-  return (
-    <div>
-      <h1>Welcome to My React App</h1>
-      <MyComponent />
-    </div>
-  );
+    // Check the value of table_content.option0
+    switch (table_content.option0) {
+      case 'city':
+        return item.city === table_content.option1;
+      case 'neighborhood':
+        return item.neighborhood === table_content.option1;
+      case 'community_area':
+        return item.community_area === table_content.option1;
+      case 'ward':
+        return item.ward === table_content.option1;
+      // Add more cases for other options if needed
+      default:
+        // If option0 doesn't match any cases, return true (no filtering)
+        return true;
+    }
+  });
+  return new_data;
 }
-
-export default App;
-
