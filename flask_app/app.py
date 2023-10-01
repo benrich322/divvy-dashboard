@@ -16,6 +16,9 @@ mongo = MongoClient(mongo_uri)
 # Use the desired database and collection
 db = mongo.get_default_database()
 station_names = db['station_names']
+divvy_rides_and_weather = db["divvy_rides_and_weather"]
+divvy_rides_by_season = db["divvy_rides_by_season"]
+divvy_rides_by_month = db["divvy_rides_by_month"]
 
 
 
@@ -27,10 +30,6 @@ def read_geojson_file(file_path):
     except Exception as e:
         print(f"Error reading GeoJSON file: {str(e)}")
         return None
-
-
-
-
 
 # Define your Flask routes
 
@@ -44,6 +43,9 @@ def welcome():
     return (
         "Available Routes:<br/>"
         "/api/v1.0/stations<br/>"
+        "/api/v1.0/divvy_rides_and_weather<br/>"
+        "/api/v1.0/divvy_rides_by_season<br/>"
+        "/api/v1.0/divvy_rides_by_month<br/>"
         "/api/v1.0/city_boundary<br/>"
         "/api/v1.0/community_area_boundary<br/>"
         "/api/v1.0/neighborhood_boundary<br/>"
@@ -56,6 +58,27 @@ def stations():
     station_cursor = station_names.find()
     station_data = list(station_cursor)
     return jsonify(station_data)
+
+@app.route("/api/v1.0/divvy_rides_and_weather")
+def rides_and_weather():
+    """Return a list of daily divvy rides and weather from the dataset."""
+    divvy_rides_and_weather_cursor = divvy_rides_and_weather.find()
+    divvy_rides_and_weather_data = list(divvy_rides_and_weather_cursor)
+    return jsonify(divvy_rides_and_weather_data)
+
+@app.route("/api/v1.0/divvy_rides_by_season")
+def rides_by_season():
+    """Return a list of divvy rides by season dataset."""
+    divvy_rides_by_season_cursor = divvy_rides_by_season.find()
+    divvy_rides_by_season_data = list(divvy_rides_by_season_cursor)
+    return jsonify(divvy_rides_by_season_data)
+
+@app.route("/api/v1.0/divvy_rides_by_month")
+def rides_by_month():
+    """Return a list of divvy rides by month dataset."""
+    divvy_rides_by_month_cursor = divvy_rides_by_month.find()
+    divvy_rides_by_month_data = list(divvy_rides_by_month_cursor)
+    return jsonify(divvy_rides_by_month_data)
 
 @app.route("/api/v1.0/city_boundary")
 def city_boundary():
