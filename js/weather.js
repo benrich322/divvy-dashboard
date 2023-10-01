@@ -63,7 +63,7 @@ fetch('https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/divvy_rides_b
   })
   .catch(error => {
     console.error('Error fetching data:', error);
-  });
+});
 
 // Call the function with the provided JSON data
 function createPieChart(data) {
@@ -92,91 +92,98 @@ function createPieChart(data) {
           text: 'Rides by Type',
         },
         plugins: {
-          tooltip: {
-              callbacks: {
-                  label: (context) => {
-                      const label = context.label || '';
-                      const value = context.parsed || 0;
-                      const total = counts.reduce((acc, curr) => acc + curr, 0);
-                      const percentage = ((value / total) * 100).toFixed(2);
-                      return `${label}: ${percentage}%`;
+            tooltip: {
+                callbacks: {
+                    label: (context) => {
+                        const label = context.label || '';
+                        const value = context.parsed || 0;
+                        const total = counts.reduce((acc, curr) => acc + curr, 0);
+                        const percentage = ((value / total) * 100).toFixed(2);
+                        return `${label}: ${percentage}%`;
+                    },
                   },
                 },
-              },
-            },      
-          },
-    });
-}
+              },      
+            },
+      });
+  }
+
 
 // Fetch JSON data from the provided URLs
-const fetchDataset1 = fetch('https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/divvy_rides_and_weather')
+const fetchDataset1 = fetch('https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/avg_rides_by_month')
   .then(response => response.json());
 
 function createChart(dataset1) {
-
-    function createUtils() {
-        return {
-          CHART_COLORS: {
-            red: 'rgba(255, 0, 0, 1)',
-            green: 'rgba(0, 255, 0, 1)',
-            blue: 'rgba(0, 0, 255, 1)',
-            // Define other colors as needed
-          },
-          transparentize: (color, opacity) => {
-            const rgbaColor = color.replace('1)', `${opacity})`);
-            return rgbaColor;
-          }
-        };
+  function createUtils() {
+    return {
+      CHART_COLORS: {
+        red: 'rgba(255, 0, 0, 1)',
+        blue: 'rgba(0, 0, 255, 1)'
+      },
+      transparentize: (color, opacity) => {
+        const rgbaColor = color.replace('1)', `${opacity})`);
+        return rgbaColor;
       }
-      
-    const utils = createUtils();
+    };
+  }
 
-    // Define an array of short month names
-    const shortMonthNames = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-      ];
-    const months = dataset1.map(entry => shortMonthNames[parseInt(entry.month) - 1]);
-    const data = {
-        labels: months,
-        datasets: [
-          {
-            label: 'Significant Precipitation (>=0.1 in)',
-            data: dataset1.map(entry => entry.average_rides_per_day),
-            borderColor: utils.CHART_COLORS.red,  // Corrected
-            backgroundColor: utils.transparentize(utils.CHART_COLORS.red, 0.5),  // Corrected
-          },
-          {
-            label: 'Insignificant Precipitation (<0.1 in)',
-            data: dataset2.map(entry => entry.average_rides_per_day),
-            borderColor: utils.CHART_COLORS.blue,  // Corrected
-            backgroundColor: utils.transparentize(utils.CHART_COLORS.blue, 0.5),  // Corrected
+  const utils = createUtils();
+
+  // Extract data for "Significant Precipitation" and "Insignificant Precipitation"
+  const significantPrecipitationData = dataset1
+    .filter(entry => entry.data.some(dataEntry => dataEntry.significant_precipitation === 'True'))
+    .map(entry => entry.data.find(dataEntry => dataEntry.significant_precipitation === 'True').avg_rides);
+
+  const insignificantPrecipitationData = dataset1
+    .filter(entry => entry.data.some(dataEntry => dataEntry.significant_precipitation === 'False'))
+    .map(entry => entry.data.find(dataEntry => dataEntry.significant_precipitation === 'False').avg_rides);
+
+  const labels = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ];
+
+  const ctx = document.getElementById('weather__Chart').getContext('2d');
+  const weatherChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Significant Precipitation',
+          data: significantPrecipitationData,
+          borderColor: utils.CHART_COLORS.red,
+          backgroundColor: utils.transparentize(utils.CHART_COLORS.red, 0.5)
+        },
+        {
+          label: 'Insignificant Precipitation',
+          data: insignificantPrecipitationData,
+          borderColor: utils.CHART_COLORS.blue,
+          backgroundColor: utils.transparentize(utils.CHART_COLORS.blue, 0.5)
+        }
+      ]
+    },
+    options: {
+      scales: {
+        x: {
+          type: 'category',  // Use 'category' type for the x-axis
+          labels: labels,    // Provide the labels explicitly
+          title: {
+            display: true,
+            text: 'Month'
           }
-        ]
-      };
-  
-    const ctx = document.getElementById('weatherChart').getContext('2d');
-    const weatherChart = new Chart(ctx, {
-      type: 'line',
-      data: data,
-      options: {
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: 'Month'
-            }
-          },
-          y: {
-            title: {
-              display: true,
-              text: 'Average Rides per Day'
-            }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Average Rides per Day'
           }
         }
       }
-    });
-  }
+    }
+  });
+}
 
-const borderColor1 = utils.CHART_COLORS.red;
-const transparentColor1 = utils.transparentize(utils.CHART_COLORS.red, 0.5);
+// Call the function when the data is fetched
+fetchDataset1.then(createChart);
+
