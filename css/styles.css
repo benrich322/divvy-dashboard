@@ -76,6 +76,16 @@ body {
     font-size: 2rem;
 }
 
+
+.sidebar__text {
+    text-decoration: none;
+    color: inherit;
+}
+
+.active--link {
+    color: darkblue;
+  }
+
 /* Reset some default styles */
 html {
     font-size: 62.5%;

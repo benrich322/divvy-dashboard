@@ -31,16 +31,16 @@
     <section class="sidebar">
       <ul class="sidebar__list">
         <li class="sidebar__selection">
-          <i class="sidebar__icon fa-solid fa-map"></i
-          ><span class="sidebar__text">Map</span>
+          <i class="sidebar__icon active--link fa-solid fa-map"></i
+          ><a href="index.html" class="sidebar__text active--link">Map</a>
         </li>
         <li class="sidebar__selection">
-          <i class="sidebar__icon fa-solid fa-cloud"></i
-          ><span class="sidebar__text">Weather</span>
+          <i class="sidebar__icon fa-solid fa-cloud"></i>
+          <a href="weather.html" class="sidebar__text">Weather</a>
         </li>
         <li class="sidebar__selection">
           <i class="sidebar__icon fa-solid fa-trophy"></i
-          ><span class="sidebar__text">Records</span>
+          ><a href="records.html" class="sidebar__text">Records</a>
         </li>
       </ul>
     </section>
@@ -74,7 +74,7 @@
           <div class="collapsible__header">
             <p class="collapsible__heading">Location</p>
             <p class="collapsible__selection">
-              <span id="selectedOption1">Chicago</span>
+              <span id="selectedOption1"></span>
               <i class="fa-solid fa-chevron-up collapsible__chevron"></i>
             </p>
           </div>
@@ -86,7 +86,7 @@
     </section>
     <section class="map__block">
       <div class="map__container">
-        <h2 class="map__title">Divvy Station Map for the City of Chicago</h2>
+        <h2 class="map__title">Divvy Station Map for the City: Select a Location</h2>
         <div id="map" class="map"></div>
         <!-- This is where your Leaflet map will be rendered -->
       </div>

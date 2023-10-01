@@ -143,13 +143,22 @@ function updateTitle() {
     // Get the text content of selectedOption0 and selectedOption1
     const selectedOption0 = document.getElementById("selectedOption0").textContent;
     const selectedOption1 = document.getElementById("selectedOption1").textContent;
-  
-    // Combine the text content to form the new title
-    const newTitle = `Divvy Station Map for ${selectedOption0}: ${selectedOption1}`;
-  
-    // Update the title element
-    const titleElement = document.querySelector(".map__title");
-    titleElement.textContent = newTitle;
+
+    // Check if selectedOption1 is blank
+    if (selectedOption1.trim() === "") {
+        // If it's blank, show a message to make a selection
+        const titleElement = document.querySelector(".map__title");
+        let newTitle = `Divvy Station Map for ${selectedOption0}: Select a Location`;
+        titleElement.textContent = newTitle;
+    } else {
+        // Combine the text content to form the new title
+        let newTitle = `Divvy Station Map for ${selectedOption0}: ${selectedOption1}`;
+
+        // Update the title element with the new title
+        const titleElement = document.querySelector(".map__title");
+        titleElement.textContent = newTitle;
+    }
 }
+
   
 
