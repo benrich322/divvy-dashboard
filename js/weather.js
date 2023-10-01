@@ -129,7 +129,7 @@ function createChart(dataset1) {
 
   const utils = createUtils();
 
-  // Extract data for "Significant Precipitation" and "Insignificant Precipitation"
+  // Extract data for "Significant Precipitation" and "Insignificant Precipitation" /
   const significantPrecipitationData = dataset1
     .filter(entry => entry.data.some(dataEntry => dataEntry.significant_precipitation === 'True'))
     .map(entry => entry.data.find(dataEntry => dataEntry.significant_precipitation === 'True').avg_rides);
