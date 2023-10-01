@@ -1,3 +1,4 @@
+// Define the filterDataByCommunityArea function
 function filterDataByCommunityArea(table_content, data) {
   // Use the Array.prototype.filter() method to filter the data
   const new_data = data.filter(item => {
@@ -19,5 +20,10 @@ function filterDataByCommunityArea(table_content, data) {
         return true;
     }
   });
+
+  // Return the filtered data
   return new_data;
 }
+
+// Export the new_data variable separately
+//export { filterDataByCommunityArea };

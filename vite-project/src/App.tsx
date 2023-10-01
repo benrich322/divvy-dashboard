@@ -1,5 +1,3 @@
-import Message from "./message";
-import Message2 from "./message2";
 import Message3 from "./message3";
 
 function App() {
@@ -11,3 +9,11 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
