@@ -19,6 +19,7 @@ station_names = db['station_names']
 divvy_rides_and_weather = db["divvy_rides_and_weather"]
 divvy_rides_by_season = db["divvy_rides_by_season"]
 divvy_rides_by_month = db["divvy_rides_by_month"]
+avg_rides_by_month = db["avg_rides_by_month"]
 
 
 
@@ -46,6 +47,7 @@ def welcome():
         "/api/v1.0/divvy_rides_and_weather<br/>"
         "/api/v1.0/divvy_rides_by_season<br/>"
         "/api/v1.0/divvy_rides_by_month<br/>"
+        "/api/v1.0/avg_rides_by_month<br/>"
         "/api/v1.0/city_boundary<br/>"
         "/api/v1.0/community_area_boundary<br/>"
         "/api/v1.0/neighborhood_boundary<br/>"
@@ -79,6 +81,13 @@ def rides_by_month():
     divvy_rides_by_month_cursor = divvy_rides_by_month.find()
     divvy_rides_by_month_data = list(divvy_rides_by_month_cursor)
     return jsonify(divvy_rides_by_month_data)
+
+@app.route("/api/v1.0/avg_rides_by_month")
+def rides_by_month_avg():
+    """Return a list of divvy rides by month with averages dataset."""
+    avg_rides_by_month_cursor = avg_rides_by_month.find()
+    avg_rides_by_month_data = list(avg_rides_by_month_cursor)
+    return jsonify(avg_rides_by_month_data)
 
 @app.route("/api/v1.0/city_boundary")
 def city_boundary():

@@ -220,6 +220,43 @@ html {
     z-index: 0;
 }
 
+/* Weather Charts */
 
+.chart__container {
+    display: flex;
+  }
+  
+.line__chart {
+    flex: 1;
+    padding: 20px;
+}
+  
+.pie__chart {
+    flex: 1;
+    padding: 20px;
+}
 
+/* Style the section headers for the charts */
+.section__header {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 20px; /* Adjust the font size as needed */
+  font-weight: bold; /* Make the text bold */
+  text-align: center; /* Center the section header text */
+}
 
+/* Style the line chart canvas element */
+#rides__Chart {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style the pie chart canvas element */
+#pie__Chart {
+  width: 100%;
+  max-height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
