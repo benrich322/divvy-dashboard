@@ -1,37 +1,7 @@
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-
-// Define the filterDataByCommunityArea function
-function filterDataByCommunityArea(table_content, data) {
-    // Check if data is null or undefined before filtering
-    if (data == null) {
-        return [];
-    }
-    
-    // Use the Array.prototype.filter() method to filter the data
-    const new_data = data.filter(item => {
-      // Log the value of item.community_area
-  
-      // Check the value of table_content.option0
-      switch (table_content.option0) {
-        case 'city':
-          return item.city === table_content.option1;
-        case 'neighborhood':
-          return item.neighborhood === table_content.option1;
-        case 'community_area':
-          return item.community_area === table_content.option1;
-        case 'ward':
-          return item.ward === table_content.option1;
-        // Add more cases for other options if needed
-        default:
-          // If option0 doesn't match any cases, return true (no filtering)
-          return true;
-      }
-    });
-  
-    // Return the filtered data
-    return new_data;
-}
+//import { getSelectedOptionsText } from "../js/map"; // Update the path accordingly
 
 // Define your jsonData here (replace with your actual data)
 const columns: GridColDef[] = [
@@ -88,21 +58,28 @@ const columns: GridColDef[] = [
       editable: true,
     },
   ];
-
-// Define table_content with your actual data
-const table_content = {/* Your table_content data here */};
-
-// Assuming you have the filterDataByCommunityArea function working correctly
-const new_data = filterDataByCommunityArea(table_content, jsonData); // Assign the filtered data to new_data
-
-export default function Message3() {
-  // Function to generate a unique ID based on the _id field
-  const getRowId = (row) => row._id;
-
+  export default function Message3() {
+    const [jsonData, setJsonData] = useState([]);
+  
+    // Function to generate a unique ID based on the _id field
+    const getRowId = (row) => row._id;
+  
+    useEffect(() => {
+      // Fetch data from the URL when the component mounts
+      fetch("https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/stations")
+        .then((response) => response.json())
+        .then((data) => {
+          // Update the state with the fetched data
+          setJsonData(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }, []); // The empty array [] ensures this effect runs only once
   return (
     <Box sx={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={new_data}
+        rows={jsonData}
         columns={columns}
         pagination
         pageSize={5}
@@ -113,6 +90,7 @@ export default function Message3() {
     </Box>
   );
 }
+
 
   
   

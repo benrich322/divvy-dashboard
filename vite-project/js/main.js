@@ -43,8 +43,8 @@ async function handleSelectionChange(map) {
         //
         updateTitle();
 
-        // New
-        filterDataByCommunityArea(selectedOptions, jsonData);
+        //new
+        filterDataByCommunityArea();
 
     } catch (error) {
         // Handle any errors that occur during the process.
