@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+
+// Define a TypeScript interface for your row data
+interface RowData {
+  _id: string;
+  city: string;
+  neighborhood: string;
+  station_name: string;
+  ride_count: number;
+}
 //import { getSelectedOptionsText } from "../js/map"; // Update the path accordingly
 
 // Define your jsonData here (replace with your actual data)
@@ -31,7 +40,7 @@ const columns: GridColDef[] = [
     const [jsonData, setJsonData] = useState([]);
   
     // Function to generate a unique ID based on the _id field
-    const getRowId = (row) => row._id;
+    const getRowId = (row: RowData) => row._id;
   
     useEffect(() => {
       // Fetch data from the URL when the component mounts

@@ -9,12 +9,3 @@ function dataGrid() {
 }
 
 export default dataGrid;
-
-
-
-
-
-
-
-
-
