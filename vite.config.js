@@ -7,5 +7,11 @@ export default defineConfig({
   build: {
     target: 'esnext', // Set this to 'esnext'
   },
+  esbuild: {
+    jsxFactory: 'React.createElement',
+    jsxFragment: 'React.Fragment',
+  },
 });
+
+
 
