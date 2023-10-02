@@ -5,57 +5,26 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 // Define your jsonData here (replace with your actual data)
 const columns: GridColDef[] = [
-    { field: "_id", headerName: "ID", width: 40 },
     {
-      field: "city",
-      headerName: "City",
-      width: 150,
-      editable: true,
-    },
-    {
-      field: "community_area",
-      headerName: "Community Area",
-      width: 150,
-      editable: true,
-    },
-    {
-      field: "lat",
-      headerName: "Latitude",
-      type: "number",
-      width: 100,
-      editable: true,
-    },
-    {
-      field: "lng",
-      headerName: "Longitude",
-      type: "number",
-      width: 120,
-      editable: true,
-    },
+        field: "city",
+        headerName: "City",
+        width: 100,
+      },
     {
       field: "neighborhood",
       headerName: "Neighborhood",
       width: 150,
-      editable: true,
     },
+    {
+        field: "station_name",
+        headerName: "Station Name",
+        width: 150,
+      },
     {
       field: "ride_count",
       headerName: "Ride Count",
       type: "number",
-      width: 120,
-      editable: true,
-    },
-    {
-      field: "station_name",
-      headerName: "Station Name",
-      width: 200,
-      editable: true,
-    },
-    {
-      field: "ward",
-      headerName: "Ward",
-      width: 80,
-      editable: true,
+      width: 150,
     },
   ];
   export default function Message3() {
@@ -77,14 +46,14 @@ const columns: GridColDef[] = [
         });
     }, []); // The empty array [] ensures this effect runs only once
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={{ height: "75vh", width: "78vh" }}>
       <DataGrid
         rows={jsonData}
         columns={columns}
         pagination
-        pageSize={5}
-        checkboxSelection
-        disableSelectionOnClick
+        //pageSize={5}
+        //checkboxSelection
+        //disableSelectionOnClick
         getRowId={getRowId} // Specify the custom ID function
       />
     </Box>
