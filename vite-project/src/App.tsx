@@ -1,6 +1,6 @@
-import Message3 from "./message3";
+import Message3 from "./data_grid";
 
-function App() {
+function dataGrid() {
   return (
     <div>
       <Message3 />
@@ -8,7 +8,7 @@ function App() {
   );
 }
 
-export default App;
+export default dataGrid;
 
 
 

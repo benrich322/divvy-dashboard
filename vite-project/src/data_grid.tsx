@@ -27,7 +27,7 @@ const columns: GridColDef[] = [
       width: 150,
     },
   ];
-  export default function Message3() {
+  export default function dataGrid() {
     const [jsonData, setJsonData] = useState([]);
   
     // Function to generate a unique ID based on the _id field
