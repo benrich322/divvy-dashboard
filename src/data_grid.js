@@ -1,3 +1,4 @@
+console.log("Importing React");
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
