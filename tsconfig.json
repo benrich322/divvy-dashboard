@@ -9,11 +9,11 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
+    "module": "CommonJS", // Updated to CommonJS
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react",
+    "jsx": "react"
     // "noEmit": false // Remove this line
   },
   "include": ["src/**/*"]
