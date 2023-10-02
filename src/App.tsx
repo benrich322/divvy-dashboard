@@ -1,11 +1,11 @@
-import Message3 from "./data_grid";
+import DataGrid from "./Data_Grid";
 
-function dataGrid() {
+function DataGridContainer() {
   return (
     <div>
-      <Message3 />
+      <DataGrid />
     </div>
   );
 }
 
-export default dataGrid;
+export default DataGridContainer;
