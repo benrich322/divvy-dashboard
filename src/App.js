@@ -1,4 +1,3 @@
-console.log("Importing React");
 import React from "react";
 import DataGridFunction from "./data_grid";
 function App() {
