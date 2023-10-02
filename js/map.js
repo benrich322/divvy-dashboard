@@ -12,6 +12,7 @@ function getSelectedOptionsText() {
     };
 
     // After looking at these things, we put the choices in our box.
+    console.log("test",selectedOptions)
     return selectedOptions;
 }
 
@@ -52,7 +53,6 @@ let geojsonDataCache = {}; // Cache for storing fetched GeoJSON data
 
 // This function helps create a border on the map.
 function displayCommunityAreaBorder(selectedOptions, leafletMap) {
-    console.log('selectedOptions', selectedOptions);
     // It looks at a name.
     let location_type_selection = selectedOptions.option0;
     let location_selection = selectedOptions.option1;

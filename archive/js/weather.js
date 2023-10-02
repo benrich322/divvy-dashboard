@@ -11,6 +11,7 @@ fetch('https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/divvy_rides_b
 
 // Call the function with the provided JSON data
 function createLineChart(data) {
+    console.log(data);
     // Define an array of short month names
     const shortMonthNames = [
       'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -66,9 +67,12 @@ fetch('https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/divvy_rides_b
 
 // Call the function with the provided JSON data
 function createPieChart(data) {
+    console.log(data);
     // Extract seasons and total rides from the JSON data
     const labels = data.map(entry => entry._id.season);
+        console.log(labels);
     const counts = data.map(entry => entry.total_rides);
+        console.log(counts);
   
     const ctx = document.getElementById('pie__Chart').getContext('2d');
     const pieChart = new Chart(ctx, {

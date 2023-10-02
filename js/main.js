@@ -43,6 +43,9 @@ async function handleSelectionChange(map) {
         //
         updateTitle();
 
+        //new
+        filterDataByCommunityArea();
+
     } catch (error) {
         // Handle any errors that occur during the process.
         console.error("Error handling selection change:", error);

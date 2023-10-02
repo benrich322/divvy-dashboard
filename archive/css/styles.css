@@ -14,15 +14,10 @@ body {
 
 /* Header */
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: #66c0ec;
+    position: relative;
     width: 100%;
+    background-color: #66c0ec;
     height: 5.5rem;
-    display: flex;
-    align-items: center;
 }
 
 .header__content {
@@ -31,17 +26,15 @@ body {
     font-size: 3.5rem;
     margin: 0;
     margin-left: .5rem;
-    color: #000;
 }
 
 /* Sidebar */
 .sidebar {
-    position: fixed;
+    position: absolute;
     background-color: #66c0ec;
     display: flex;
     flex-direction: row;
-    height: calc(100vh - 5.5rem);
-    top: 5.5rem; /* Position below the header */
+    height: 100vh;
     width: 5rem;
     transition: width .5s;
     overflow: hidden;
@@ -100,64 +93,25 @@ html {
     padding: 0;
 }
 
-/* Conent Block */
-
-.main__block {
-    position: absolute;
-    top: 6.5rem; /* Set the top position below the header */
-    left: 6.5rem; /* Adjust the left position for spacing */
-    right: 0;
-    bottom: 0;
-    overflow-y: scroll;
-    height: calc(100vh - 6.5rem); /* Set a fixed height based on viewport height */
-}
-
-.content__block {
-    display: flex;
-    gap: 20px;
-    margin: 15px 0px 15px 0px;
-
-}
-
-/* Table */
-.table__container {
-    width: 85vh;
-    height: 85vh;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    border-radius: 10px;
-}
-
-.table__title {
-    margin-top: 10px;
-    font-size: 1.5rem; 
-    font-weight: bold;
-    color: #000;
-}
-
 /* Collapsible */
 .collapsible__block {
+    margin: 10px 60px 10px 60px;
     display: flex;
-    width: 100%;
-    gap: 20px; 
+  justify-content: flex-start;
+  gap: 20px;
+  
 }
-
 
 .collapsible__container {
     position: relative;
     border: 1px solid #ccc;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    display: flex; /* Use flexbox */
+    display: inline-flex;
     max-width: 20rem;
-    max-height: 7.5rem;
+    max-height: 6.5rem;
     background-color: #fff;
-}
+  }
 
 .collapsible__header {
     display: flex;
@@ -169,12 +123,12 @@ html {
 .collapsible__heading {
     margin: 0;
     font-size: 1.2rem;
-    color: #000;
 }
 
 .collapsible__chevron {
     transition: transform 0.3s;
     transform: rotate(180deg);
+
 }
 
 .collapsible--expanded .collapsible__chevron {
@@ -184,23 +138,12 @@ html {
 .collapsible__selection {
     font-size: 1.4rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
     pointer-events: auto;
     max-width: 20rem;
     min-width: 15rem;
-    color: #000;
-}
-
-/* Create and style the line */
-.collapsible__selection::before {
-    content: "";
-    position: absolute;
-    bottom: 10px;
-    left: 15px;
-    right: 15px;
-    height: 1px; /* Adjust the height of the line as needed */
-    background-color: #000; /* Line color */
+    justify-content: space-between;
 }
 
 .collapsible--expanded .collapsible__content {
@@ -208,7 +151,6 @@ html {
     opacity: 1;
     pointer-events: auto;
     z-index: 1;
-    color: #000;
 }
 
 .collapsible__content {
@@ -243,6 +185,12 @@ html {
 
 /* Map */
 
+.map__block {
+    margin: 10px 60px 10px 60px;
+    display: flex;
+    justify-content: flex-start;
+  
+}
 
 .map__container {
     width: 85vh;
@@ -262,7 +210,6 @@ html {
     font-size: 1.5rem; 
     font-weight: bold;
     min-width: 350px;
-    color: #000;
 }
 
 .map {
