@@ -12,7 +12,7 @@ Location Type Options
 - Neighborhood
 
 City 
-- Chicago
+
 
 Ward 
 - GeoJson Data
