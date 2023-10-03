@@ -30,7 +30,7 @@ async function handleSelectionChange(map) {
 
         // Get the selected options from the dropdowns.
         const selectedOptions = getSelectedOptionsText();
-
+       
         // Find stations that match the selected options.
         const matchingStations = findMatchingStationsnew(selectedOptions, jsonData);
 

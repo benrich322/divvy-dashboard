@@ -12,7 +12,6 @@ function getSelectedOptionsText() {
     };
 
     // After looking at these things, we put the choices in our box.
-    console.log("test",selectedOptions)
     return selectedOptions;
 }
 
@@ -22,6 +21,7 @@ function findMatchingStationsnew(selectedOptions, jsonData) {
     const matchingStations = [];
     // It looks at each thing in a big list of information.
     jsonData.forEach(station => {
+
         // If a the location type and locaton match with the jsondata,
         if (station[selectedOptions.option0] === selectedOptions.option1) {
           // add that thing to our list.
