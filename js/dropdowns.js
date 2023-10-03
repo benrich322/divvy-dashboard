@@ -84,7 +84,17 @@ async function populateDynamicList() {
 
       // It makes a list of unique selections and puts them on the web page.
       const uniqueValues = [...new Set(jsonData.map(item => item[selectedOptionValue]))];
-      uniqueValues.sort();
+      uniqueValues.sort((a, b) => {
+        // Check if both 'a' and 'b' are numbers
+        if (!isNaN(a) && !isNaN(b)) {
+          return a - b; // Sort numbers in ascending order
+        }
+      
+        // Sort strings in alphabetical order
+        return String(a).localeCompare(String(b));
+      });
+      
+      console.log(uniqueValues);
       // It finds the place in index.html to place the list
       const dynamicSelectionList = document.querySelector('.dynamic_selection');
       
