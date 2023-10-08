@@ -47,28 +47,22 @@
     <section class="main__block">
       <div class="top__section">
         <div class="chart__container">
+          <h2 class="section__header">Divvy Rides Per Month</h2>
           <div class="line__chart">
-            <h2 class="section__header">Divvy Rides Per Month</h2>
-            <div>
-              <canvas id="rides__Chart"></canvas>
-            </div>
+            <canvas id="line__chart"></canvas>
           </div>
         </div>
         <div class="chart__container">
-          <div class="pie__chart">
             <h3 class="section__header">Divvy Rides Per Season</h3>
-            <div>
+            <div class="pie__chart">
               <canvas id="pie__Chart"></canvas>
             </div>
-          </div>
         </div>
       </div>
       <div class="chart__container__bottom">
+        <h4 class="section__header">Divvy Rides by Precipitation Level</h4>
         <div class="weather__chart">
-          <h4 class="section__header">Divvy Rides by Precipitation Level</h4>
-          <div class="weather__chart">
-            <canvas id="weather__Chart"></canvas>
-          </div>
+          <canvas id="weather__Chart"></canvas>
         </div>
       </div>
     </section>

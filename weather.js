@@ -21,8 +21,8 @@ function createLineChart(data) {
     const totalRides = data.map(entry => entry.total_rides);
 
     // Create a line chart
-    // Get the canvas element
-    const ctx = document.getElementById('rides__Chart').getContext('2d');
+    // Get the computed height from the CSS class
+    const ctx = document.getElementById('line__chart').getContext('2d');
     const ridesChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -35,6 +35,8 @@ function createLineChart(data) {
         }],
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
         scales: {
             x: {
                 title: {
@@ -160,6 +162,8 @@ function createChart(dataset1) {
       ]
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       scales: {
         x: {
           type: 'category',  // Use 'category' type for the x-axis
