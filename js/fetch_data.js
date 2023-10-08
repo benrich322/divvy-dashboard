@@ -8,6 +8,7 @@ let jsonData = null;
 
 // Initialize geojsonData as null
 let geojsonData = null;
+let geojsonUrl = null;
 
 // This is a way to ask the computer to "Please do this, but only if there isn't information yet."
 // This function fetches the bike stations data
