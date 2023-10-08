@@ -3,9 +3,11 @@ const geojsonDataCache = {};
 
 // This code helps connect to the heroku website that includes all the data
 
-// Created some empty boxes to store the information
-let jsonData = null; // Box for general information
-let geojsonData = null; // Box for map information
+// Initialize jsonData as an empty array
+let jsonData = null;
+
+// Initialize geojsonData as null
+let geojsonData = null;
 
 // This is a way to ask the computer to "Please do this, but only if there isn't information yet."
 // This function fetches the bike stations data
@@ -76,9 +78,7 @@ function fetchGeoJSONData(location_type_selection) {
 }
 
 // Export the fetchAndCacheGeoJSONData function
-export { fetchAndCacheGeoJSONData };
-export { fetchStationData };
-export { jsonData };
-export { fetchGeoJSONData };
+export { fetchAndCacheGeoJSONData, fetchStationData, jsonData, fetchGeoJSONData };
+
 
 
