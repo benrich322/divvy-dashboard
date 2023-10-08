@@ -15,5 +15,5 @@
     "isolatedModules": true,
     "jsx": "react"
   },
-  "include": ["react/**/*"]
+  "include": ["src/main/react/**/*"]
 }

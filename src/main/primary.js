@@ -89,11 +89,6 @@ function fetchGeoJSONData(location_type_selection) {
     });
 }
 
-// Export the fetchAndCacheGeoJSONData function
-export { fetchAndCacheGeoJSONData, fetchStationData, jsonData, fetchGeoJSONData };
-
-
-
 //// main_function ////
 
 

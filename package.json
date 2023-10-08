@@ -9,7 +9,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "build:main": "vite build --mode production --outDir dist/main",
+    "build:weather": "vite build --mode production --outDir dist/weather"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
