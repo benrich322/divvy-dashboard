@@ -1,3 +1,18 @@
+// Import 
+import { fetchAndCacheGeoJSONData } from './fetch_data.js'; 
+import { fetchStationData } from './fetch_data.js'; 
+import { getSelectedOptionsText } from './map.js'; 
+import { clearMarkersAndBorders } from './map.js';
+import { findMatchingStationsnew } from './map.js';
+import { createMarkers } from './map.js';
+import { displayCommunityAreaBorder } from './map.js';
+import { updateTitle } from './map.js';
+import { populateDynamicList } from './dropdowns.js'; 
+import { handleCollapsibleSelection } from './dropdowns.js'; 
+import { jsonData } from './fetch_data.js'; 
+import { fetchGeoJSONData } from './fetch_data.js'; 
+import { filterDataByCommunityArea } from './react.js';
+import map from './map2.js';
 // This is the main function that gets executed when the page loads.
 function main() {
     // Get the selected options from the dropdowns.
@@ -46,6 +61,7 @@ async function handleSelectionChange(map) {
         //new
         filterDataByCommunityArea();
 
+
     } catch (error) {
         // Handle any errors that occur during the process.
         console.error("Error handling selection change:", error);
@@ -54,17 +70,17 @@ async function handleSelectionChange(map) {
 
 
 // Initialize the map with a specific view.
-const map = L.map('map').setView([41.8781, -87.6298], 13);
-
-// Add a base tile layer to the map for displaying maps.
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
+//const map = L.map('map').setView([41.8781, -87.6298], 13);
+//
+//// Add a base tile layer to the map for displaying maps.
+//L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//}).addTo(map);
+//
 // Fetch and cache all GeoJSON data during application initialization
 fetchAndCacheGeoJSONData().then(() => {
     // Your application is now ready to use cached GeoJSON data
     // You can access it using geojsonDataCache[location_type_selection]
 });
 
-
+export { handleSelectionChange };

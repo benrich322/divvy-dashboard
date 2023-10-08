@@ -1,3 +1,6 @@
+import { capitalizeWord } from './dropdowns.js'; 
+const geojsonDataCache = {};
+
 // This code helps connect to the heroku website that includes all the data
 
 // Created some empty boxes to store the information
@@ -72,10 +75,10 @@ function fetchGeoJSONData(location_type_selection) {
     });
 }
 
-
-
-
-
-
+// Export the fetchAndCacheGeoJSONData function
+export { fetchAndCacheGeoJSONData };
+export { fetchStationData };
+export { jsonData };
+export { fetchGeoJSONData };
 
 

@@ -1,3 +1,4 @@
+import { fetchGeoJSONData } from './fetch_data.js'; 
 // This function finds the selections of location type and location
 function getSelectedOptionsText() {
     // It creates a box to hold the choices.
@@ -160,5 +161,9 @@ function updateTitle() {
     }
 }
 
-  
-
+export { getSelectedOptionsText };
+export { clearMarkersAndBorders };
+export { findMatchingStationsnew };
+export {createMarkers};
+export {displayCommunityAreaBorder};
+export {updateTitle};

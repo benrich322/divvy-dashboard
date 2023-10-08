@@ -29,3 +29,5 @@ function filterDataByCommunityArea(selectedOptions, reactdata) {
   // Return the filtered data
   return reactdata;
 }
+
+export {filterDataByCommunityArea};

@@ -1,3 +1,7 @@
+import { fetchStationData, jsonData } from './fetch_data.js'; 
+import { handleSelectionChange } from './main_functions.js'; 
+import map from './map2.js'; 
+
 // This function capitalizes a word
 function capitalizeWord(word) {
   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
@@ -115,11 +119,10 @@ async function populateDynamicList() {
     }
 }
 
-  
-
-
-
-
+// Export the fetchAndCacheGeoJSONData function
+export { populateDynamicList };
+export { handleCollapsibleSelection };
+export { capitalizeWord };
 
 
 
