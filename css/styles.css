@@ -98,6 +98,8 @@ body {
     position: absolute;
     top: 6.5rem;
     left: 6.5rem;
+    right: 0rem;
+    bottom: 0rem;
     overflow-y: auto; /* Use "auto" to enable scrolling only when necessary */
     height: calc(100vh - 6.5rem);
 }
