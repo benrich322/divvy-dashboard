@@ -17,13 +17,13 @@ const columns = [
     {
         field: "station_name",
         headerName: "Station Name",
-        width: 150,
+        width: 250,
     },
     {
         field: "ride_count",
         headerName: "Ride Count",
         type: "number",
-        width: 150,
+        width: 80,
     },
 ];
 export default function DataGridFunction() {
