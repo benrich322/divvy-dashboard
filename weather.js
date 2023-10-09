@@ -9,7 +9,7 @@ fetch('https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/divvy_rides_b
     console.error('Error fetching data:', error);
 });
 
-// Call the function with the provided JSON data
+// This function creates divvy rides per month line chart
 function createLineChart(data) {
     // Define an array of short month names
     const shortMonthNames = [
@@ -66,7 +66,7 @@ fetch('https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/divvy_rides_b
     console.error('Error fetching data:', error);
 });
 
-// Call the function with the provided JSON data
+// This function creates divvy rides per season pie chart
 function createPieChart(data) {
     // Extract seasons and total rides from the JSON data
     const labels = data.map(entry => entry._id.season);
@@ -106,11 +106,11 @@ function createPieChart(data) {
       });
   }
 
-
 // Fetch JSON data from the provided URLs
 const fetchDataset1 = fetch('https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/avg_rides_by_month')
   .then(response => response.json());
 
+// This function creates divvy rides by precipitation level line chart
 function createChart(dataset1) {
   function createUtils() {
     return {
