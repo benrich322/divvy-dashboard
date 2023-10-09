@@ -4,7 +4,7 @@ Link to website: https://benrich322.github.io/divvy-dashboard/
 
 ## Project Overview
 
-Goal was identify how popular each Divvy station was during 2022 using Divvy trip history data as well as use the OpenWeather API to share how weather impacts Divvy rides.
+I set out to identify the popularity of the Chicago bike-sharing service Divvy and how weather impacts rides. I used Divvy trip history data and the OpenWeather API.
 
 The research questions guiding the project were:
 
@@ -21,12 +21,12 @@ The research questions guiding the project were:
 ## Resources
 
 1. Divvy Rides Data
-    - https://divvybikes.com/system-data
-2. Chicago Ward, Community Area, and Neighborhood Maps 
-    - https://www.chicago.gov/city/en/depts/dgs/supp_info/citywide_maps.html
+   - https://divvybikes.com/system-data
+2. Chicago Ward, Community Area, and Neighborhood Maps
+   - https://www.chicago.gov/city/en/depts/dgs/supp_info/citywide_maps.html
 3. Open Weather
-    - https://openweathermap.org/api/one-call-3#history_daily_aggregation
+   - https://openweathermap.org/api/one-call-3#history_daily_aggregation
 4. MongoDB Atlas
-    - https://cloud.mongodb.com/v2/6511b74b7856e5774978e246#/overview
+   - https://cloud.mongodb.com/v2/6511b74b7856e5774978e246#/overview
 5. Heroku JSON Data
-    - https://divvy-db-public-5f412972abe3.herokuapp.com/
+   - https://divvy-db-public-5f412972abe3.herokuapp.com/
