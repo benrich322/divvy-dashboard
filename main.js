@@ -1,18 +1,30 @@
-///// map.js ////
+//////// Initialize the Leaflet map instance ////////
 const map = L.map('map').setView([41.8781, -87.6298], 13);
 
-// Add a base tile layer
+// Add a base tile layer to the map
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Attribution for the map source
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+// Explanation:
+// 1. Initialize a Leaflet map instance and set it to 'map' variable.
+//    - This map will be placed inside the HTML element with id 'map'.
+//    - The initial view will be centered at latitude 41.8781 and longitude -87.6298 (Chicago) with a zoom level of 13.
 
+// 2. Add a base tile layer to the map.
+//    - The tile layer is retrieved from OpenStreetMap using the specified URL template.
+//    - {s}, {z}, {x}, and {y} are placeholders replaced by Leaflet with appropriate values.
+//      - {s}: Subdomain (for load balancing).
+//      - {z}: Zoom level.
+//      - {x}: Tile's horizontal coordinate.
+//      - {y}: Tile's vertical coordinate.
+//    - Attribution information is provided for OpenStreetMap's usage.
+//    - The tile layer is added to the 'map' instance, making it the base layer of the map.
 
-//// fetch_data ////
+//////// Fetch Data ////////
 
-
-
-// This code helps connect to the heroku website that includes all the data
+// This code helps connect to the Heroku website that includes all the data
 
 // Initialize jsonData as an empty array
 let jsonData = null;
@@ -21,12 +33,11 @@ let jsonData = null;
 let geojsonData = null;
 let geojsonUrl = null;
 
-// This is a way to ask the computer to "Please do this, but only if there isn't information yet."
 // This function fetches the bike stations data
 async function fetchStationData() {
   // If we don't have general information yet, we go to the internet and ask for it.
   if (!jsonData) {
-    // Use a magic internet wand (fetch) to connent to the URL with the bike stations data.
+    // Use a magic internet wand (fetch) to connect to the URL with the bike stations data.
     const response = await fetch('https://divvy-db-public-5f412972abe3.herokuapp.com/api/v1.0/stations');
 
     // Put the data into the general information box (jsonData).
@@ -34,20 +45,15 @@ async function fetchStationData() {
     // Next, look at all the pieces of information (stations) in our box.
     jsonData.forEach(station => {
       if (station.city) { // If there's a word called 'city' in the information,
-        station.city = capitalizeWord(station.city); // capaitalize the word to make it look nice.
+        station.city = capitalizeWord(station.city); // capitalize the word
       }
 
       if (station.community_area) { // If there's a word called 'community_area' in the information,
-        station.community_area = capitalizeWord(station.community_area); // capaitalize the word to make it look nice.
+        station.community_area = capitalizeWord(station.community_area); // capitalize the word
       }
     });
   }
 }
-
-// This function fetches the GeoJSON data for the community areas
-// This function fetches the GeoJSON data for the community areas
-// Define an object to store cached GeoJSON data
-
 
 // Define URLs for all location types
 const geojsonUrls = {
@@ -72,7 +78,6 @@ function fetchAndCacheGeoJSONData() {
                 geojsonDataCache[locationType] = data; // Cache the fetched data
             });
     });
-
     return Promise.all(promises);
 }
 
@@ -89,9 +94,7 @@ function fetchGeoJSONData(location_type_selection) {
     });
 }
 
-//// main_function ////
-
-
+//////// Functions for Page Loading and Dropdown Selection Changes ////////
 
 // This is the main function that gets executed when the page loads.
 function main() {
@@ -101,7 +104,7 @@ function main() {
     // Populate the dynamic selection list based on the selected options.
     populateDynamicList();
 
-    // Define the number of collapsibles to handle (in this case, 3).
+    // Define the number of collapsibles to handle
     const numCollapsibles = 2;
 
     // Loop through the collapsibles and set up their behavior.
@@ -135,11 +138,11 @@ async function handleSelectionChange(map) {
         // Display the community area border on the map.
         displayCommunityAreaBorder(selectedOptions, map);
 
-        //
+        // Update the map header to match the selections.
         updateTitle();
 
-        //new
-        filterDataByCommunityArea();
+        //
+        //filterDataByCommunityArea();
 
 
     } catch (error) {
