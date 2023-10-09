@@ -2,6 +2,7 @@ csv_data/
 __pycache__/
 config.py
 node_modules/
+sandbox/
 
 # Logs
 logs
