@@ -1,4 +1,4 @@
-/* Reset some default styles */
+/* Default Styles */
 html {
     font-size: 62.5%;
     margin: 0;
@@ -42,7 +42,7 @@ body {
     display: flex;
     flex-direction: row;
     height: calc(100vh - 5.5rem);
-    top: 5.5rem; /* Position below the header */
+    top: 5.5rem;
     width: 5rem;
     transition: width .5s;
     overflow: hidden;
@@ -53,9 +53,8 @@ body {
 .sidebar:hover {
     position: absolute;
     width: 15rem;
-    z-index: 2; /* Bring sidebar to the front when expanded */
+    z-index: 2;
 }
-
 
 .sidebar__list {
     padding:0;
@@ -84,7 +83,6 @@ body {
     font-size: 2rem;
 }
 
-
 .sidebar__text {
     text-decoration: none;
     color: inherit;
@@ -94,23 +92,14 @@ body {
     color: darkblue;
   }
 
-/* Reset some default styles */
-html {
-    font-size: 62.5%;
-    margin: 0;
-    padding: 0;
-}
-
-/* Conent Block */
+/* Content Block */
 
 .main__block {
     position: absolute;
-    top: 6.5rem; /* Set the top position below the header */
-    left: 6.5rem; /* Adjust the left position for spacing */
-    right: 0;
-    bottom: 0;
-    overflow-y: scroll;
-    height: calc(100vh - 6.5rem); /* Set a fixed height based on viewport height */
+    top: 6.5rem;
+    left: 6.5rem;
+    overflow-y: auto; /* Use "auto" to enable scrolling only when necessary */
+    height: calc(100vh - 6.5rem);
 }
 
 .content__block {
@@ -121,8 +110,9 @@ html {
 }
 
 /* Table */
+
 .table__container {
-    width: 85vh;
+    width: 75vh;
     height: 85vh;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -143,12 +133,12 @@ html {
 }
 
 /* Collapsible */
+
 .collapsible__block {
     display: flex;
     width: 100%;
     gap: 20px; 
 }
-
 
 .collapsible__container {
     position: relative;
@@ -194,15 +184,14 @@ html {
     color: #000;
 }
 
-/* Create and style the line */
 .collapsible__selection::before {
     content: "";
     position: absolute;
     bottom: 10px;
     left: 15px;
     right: 15px;
-    height: 1px; /* Adjust the height of the line as needed */
-    background-color: #000; /* Line color */
+    height: 1px;
+    background-color: #000;
 }
 
 .collapsible--expanded .collapsible__content {
@@ -235,16 +224,15 @@ html {
 .collapsible__list:hover::before {
     content: "";
     position: absolute;
-    top: 0px; /* Adjust to match your margin-top value */
+    top: 0px;
     right: -6px;
-    bottom: 0px; /* Adjust to match your margin-bottom value */
+    bottom: 0px;
     left: -6px;
     background-color: lightgray;
     z-index: -1;
 }
 
 /* Map */
-
 
 .map__container {
     width: 85vh;
@@ -278,7 +266,6 @@ html {
 
 /* Weather Charts */
 
-
 .chart__container {
     width: 45%;
     height: 45vh;
@@ -308,12 +295,12 @@ html {
 }
 
 .line__chart {
-    width: 100%; /* Make the pie chart fill the container width */
+    width: 100%;
     height: 80%;
 }
   
 .pie__chart {
-    width: 100%; /* Make the pie chart fill the container width */
+    width: 100%;
     height: 80%;
 }
 
@@ -322,12 +309,10 @@ html {
     height: 80%;
 }
 
-
-/* Style the section headers for the charts */
 .section__header {
   margin-bottom: 10px;
   color: #333;
-  font-size: 2vh; /* Adjust the font size as needed */
-  font-weight: bold; /* Make the text bold */
-  text-align: center; /* Center the section header text */
+  font-size: 2vh;
+  font-weight: bold;
+  text-align: center;
 }
